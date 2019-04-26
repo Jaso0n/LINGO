@@ -33,3 +33,7 @@ aio_label.mat
 cityio_label.mat
 
 这个文件是matlab的.mat文件，存的是进出市区的节点号
+
+generate_distancematrix.m
+
+这个文件是matlab的.m文件，用来算出邻接边权矩阵
