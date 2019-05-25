@@ -2,15 +2,15 @@ function [F]=problem1()
 clc;clear
 T =10;
 r = 0.08;
-investcost = 90;                          %90 * 10^6ÃÀÔª
-%% µÚÒ»ÖÖ·½·¨
+investcost = 90;                          %90 * 10^6ç¾å…ƒ
+%% ç¬¬ä¸€ç§æ–¹æ³•
 A1 = zeros(1,10);
-F1 = myf(r,T,10*investcost);       %µÚ10ÄêµÄµÈÄêÖµ
-A1(1,:) = investym(r,T,F1);                %Äê½ğTÈ¡10
+F1 = myf(r,T,10*investcost);       %ç¬¬10å¹´çš„ç­‰å¹´å€¼
+A1(1,:) = investym(r,T,F1);                %å¹´é‡‘Tå–10
 plot(A1);
 
 hold on
-%% µÚ¶şÖÖ·½·¨
+%% ç¬¬äºŒç§æ–¹æ³•
 F2 = 0;
 f = zeros(1,T);
 a = zeros(1,T);
@@ -35,7 +35,7 @@ end
 A2 = sum(mats);
 plot(A2)
 
-%% µÚÈıÖÖ·½·¨
+%% ç¬¬ä¸‰ç§æ–¹æ³•
 first_invest = myf(r,T,5*investcost);
 last_invest = myf(r,1,5*investcost);
 a_f = investym(r,T,first_invest);
@@ -46,16 +46,16 @@ A3(2,10) = a_l;
 A3 = sum(A3);
 F3 =first_invest + last_invest;
 plot(A3);
-legend('·½·¨Ò»','·½·¨¶ş','·½·¨Èı')
-title('Ã¿ÄêÍ¶×Ê·ÑÓÃ')
-xlabel('Äê')
-ylabel('Í¶×Ê·ÑÓÃ')
+legend('æ–¹æ¡ˆä¸€','æ–¹æ¡ˆäºŒ','æ–¹æ¡ˆä¸‰')
+title('æ¯å¹´æŠ•èµ„è´¹ç”¨')
+xlabel('å¹´')
+ylabel('æŠ•èµ„è´¹ç”¨')
 hold off
 F = [F1 F2 F3];
 figure
 bar(F,'b')
-xlabel('·½·¨')
-ylabel('Í¶×Ê·ÑÓÃ')
+xlabel('æ–¹æ¡ˆ')
+ylabel('æŠ•èµ„è´¹ç”¨')
 end
 
 function f = myf(r,t,p)
