@@ -1,61 +1,54 @@
-function []=problem1() 
+function [a]=problem1() 
 clc;clear
 T =10;
 r = 0.08;
-investcost = 90;                          %90 * 10^6ç¾å…ƒ
-%% ç¬¬ä¸€ç§æ–¹æ³•
-A1 = zeros(1,10);
-F1 = myf(r,T,10*investcost);       %ç¬¬10å¹´çš„ç­‰å¹´å€¼
-A1(1,:) = investym(r,T,F1);                %å¹´é‡‘Tå–10
-plot(A1);
+investcost = 90;                          %90 * 10^6ÃÀÔª
+%% µÚÒ»ÖÖ·½°¸
+F1 = myf(r,T,10*investcost);       %µÚ10ÄêµÄµÈÄêÖµ
+A1 = investym(r,T,F1);           %Äê½ğTÈ¡10
 
-hold on
-%% ç¬¬äºŒç§æ–¹æ³•
+%% µÚ¶şÖÖ·½°¸
 F2 = 0;
 f = zeros(1,T);
 a = zeros(1,T);
-mats = zeros(T,T);
-
 for i = T:-1:1
     f(T-i+1) = myf(r,i,investcost);
-    a(T-i+1) = investym(r,i,f(T-i+1));
+    a(T-i+1) = investym(r,T,f(T-i+1));
     F2 =F2 + f(T-i+1);
 end
+A2 = sum(a);
 
-for i =1:T
-    mats(i,:) = a(i);
-end
-for i =1 :T
-    for j = 1:T 
-        if i>j
-            mats(i,j) =0;
-        end
-    end
-end
-A2 = sum(mats);
-plot(A2)
-
-%% ç¬¬ä¸‰ç§æ–¹æ³•
-first_invest = myf(r,T,5*investcost);
-last_invest = myf(r,1,5*investcost);
+%% µÚÈıÖÖ·½°¸
+p3 = 5*investcost;
+first_invest = myf(r,T,p3);
+last_invest = myf(r,1,p3);
 a_f = investym(r,T,first_invest);
-a_l = investym(r,1,last_invest);
-A3 = zeros(2,10);
-A3(1,:) = a_f;
-A3(2,10) = a_l; 
-A3 = sum(A3);
+a_l = investym(r,T,last_invest);
+A3 = a_f + a_l;
 F3 =first_invest + last_invest;
-plot(A3);
-legend('æ–¹æ¡ˆä¸€','æ–¹æ¡ˆäºŒ','æ–¹æ¡ˆä¸‰')
-title('æ¯å¹´æŠ•èµ„è´¹ç”¨')
-xlabel('å¹´')
-ylabel('æŠ•èµ„è´¹ç”¨')
-hold off
+
+%% »­Í¼
+A = zeros(3,T);
+A(1,:) = A1;
+A(2,:) = A2;
+A(3,:) = A3;
+X = 1:10;
+hold on
+for i = 1:3
+    plot(X,A(i,:),'-o','LineWidth',2,'MarkerSize',8);
+end
+legend('·½°¸Ò»','·½°¸¶ş','·½°¸Èı');
+title('ÄêÍ¶×Ê¶î')
+xlabel('Äê')
+ylabel('Í¶×Ê¶î')
+
 F = [F1 F2 F3];
+hold off
 figure
-bar(F,'b')
-xlabel('æ–¹æ¡ˆ')
-ylabel('æŠ•èµ„è´¹ç”¨')
+bar(F,0.5,'FaceColor',[0 .7  .7],'EdgeColor',[0 .9 .9],'LineWidth',1.5)
+title('ÕÛËãµ½µÚ10ÄêµÄ×ÜÍ¶×Ê¶î')
+xlabel('·½°¸')
+ylabel('Í¶×Ê¶î')
 end
 
 function f = myf(r,t,p)
