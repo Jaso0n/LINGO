@@ -1,4 +1,4 @@
-function [F]=problem1() 
+function []=problem1() 
 clc;clear
 T =10;
 r = 0.08;
