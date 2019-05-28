@@ -1,4 +1,4 @@
-function []=problem1_1() 
+function [A2]=problem1_1() 
 clc;clear
 close all
 T =10;

@@ -1,5 +1,6 @@
 function [a]=problem1() 
 clc;clear
+close all
 T =10;
 r = 0.08;
 investcost = 90;                          %90 * 10^6美元
@@ -38,7 +39,7 @@ for i = 1:3
     plot(X,A(i,:),'-o','LineWidth',2,'MarkerSize',8);
 end
 legend('方案一','方案二','方案三');
-title('年投资额')
+title('年等额投资额')
 xlabel('年')
 ylabel('投资额')
 
