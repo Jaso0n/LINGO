@@ -38,5 +38,5 @@ generate_distancematrix.m
 
 这个文件是matlab的.m文件，用来算出邻接边权矩阵，最后算出最小距离邻接矩阵
 
-![](https://github.com/Jaso0n/LINGO/blob/master/problem2_TSP/blockALL.bmp)
+![](https://github.com/Jaso0n/LINGO/blob/master/problem2_TSP/blockA.bmp)
 ![](https://github.com/Jaso0n/LINGO/blob/master/problem2_TSP/blockALL.bmp)
